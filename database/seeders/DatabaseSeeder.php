@@ -17,29 +17,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        $this->call([
+        $this->call([
 //            CategoriesSeeder::class,
 //            UserSeeder::class,
-//        ]);
+        ]);
 
-
-        User::factory()
-            ->count(50)
-            ->create()
-            ->each(function ($user) {
-//                $user->cart()->create();
-
-                Order::factory()->count(rand(0, 5))->for($user)->create();
-            });
-
-        Category::factory()
-                ->count(20)
-                ->has(Product::factory()
-                             ->count(5)
-                             ->has(Image::factory()->count(2))
-                             ->has(Comment::factory()->count(rand(0, 5)))
-                )
-                ->create();
+//
+//        User::factory()
+//            ->count(50)
+//            ->create()
+//            ->each(function ($user) {
+////                $user->cart()->create();
+//
+//                Order::factory()->count(rand(0, 5))->for($user)->create();
+//            });
+//
+//        Category::factory()
+//                ->count(20)
+//                ->has(Product::factory()
+//                             ->count(5)
+//                             ->has(Image::factory()->count(2))
+//                             ->has(Comment::factory()->count(rand(0, 5)))
+//                )
+//                ->create();
 
 //        Cart::factory()->count(5)->create();
     }

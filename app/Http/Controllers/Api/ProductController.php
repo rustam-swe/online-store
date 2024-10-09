@@ -13,11 +13,18 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-//        dd(\request()->all());
         return Product::query()
-                      ->where('category_id', request()->category_id)
+                      ->when(
+                          $request->category_id,
+                          function ($query) use ($request) {
+                              return $query->where('category_id', $request->category_id);
+                          })
+                      ->when($request->order && $request->order_by, function ($query) use ($request) {
+                          return $query->orderBy($request->order_by, $request->order);
+                      })
+                      ->limit($request->limit)
                       ->get();
     }
 
@@ -38,7 +45,7 @@ class ProductController extends Controller
         $product->name        = $request->input('name');
         $product->description = $request->input('description');
         $product->price       = $request->input('price');
-        $product->category()->associate($request->input('category'));
+        $product->category()->associate($request->input('category_id'));
         $product->save();
 
         return $product;
