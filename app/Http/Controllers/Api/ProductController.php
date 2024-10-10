@@ -82,4 +82,15 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function getProductsByCategory($id)
+    {
+        $products = Product::query()->where('category_id', $id)
+                           ->with('category');
+
+
+         new \App\Http\Resources\ProductResource($products->first());
+
+         new \App\Http\Resources\ProductCollection($products->get());
+    }
 }

@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-//            CategoriesSeeder::class,
-//            UserSeeder::class,
+            CategorySeeder::class,
+            UserSeeder::class,
+            ProductSeeder::class,
         ]);
 
 //
@@ -32,14 +33,7 @@ class DatabaseSeeder extends Seeder
 //                Order::factory()->count(rand(0, 5))->for($user)->create();
 //            });
 //
-//        Category::factory()
-//                ->count(20)
-//                ->has(Product::factory()
-//                             ->count(5)
-//                             ->has(Image::factory()->count(2))
-//                             ->has(Comment::factory()->count(rand(0, 5)))
-//                )
-//                ->create();
+
 
 //        Cart::factory()->count(5)->create();
     }
