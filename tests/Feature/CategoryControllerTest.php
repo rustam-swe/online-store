@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CategoryControllerTest extends TestCase
@@ -21,7 +22,7 @@ class CategoryControllerTest extends TestCase
         Sanctum::actingAs($user);
     }
 
-    public function test_index_returns_successful_response()
+   public function test_index_returns_successful_response()
     {
         Category::factory(3)->create();
 
