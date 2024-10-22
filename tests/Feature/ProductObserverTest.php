@@ -11,7 +11,7 @@ class ProductObserverTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_telegram_message_is_sent_when_product_is_created()
+    public function telegram_message_is_sent_when_product_is_created()
     {
         // Arrange: Mock the HTTP response
         Http::fake([

@@ -13,7 +13,7 @@ class SendTelegramMessageTest extends TestCase
     private string $token = '7032512823:AAFmnkUO_PDRF3xpJU70BgeL6DLqtmRTdzc';
     private string $chatId = '262247413';
 
-    public function test_it_sends_a_message_successfully()
+    public function it_sends_a_message_successfully()
     {
         // Arrange: Mock the HTTP response
         Http::fake([
@@ -33,7 +33,7 @@ class SendTelegramMessageTest extends TestCase
         });
     }
 
-    public function test_it_logs_an_error_when_request_fails()
+    public function it_logs_an_error_when_request_fails()
     {
         // Arrange: Mock the HTTP response to simulate a failure
         Http::fake([
