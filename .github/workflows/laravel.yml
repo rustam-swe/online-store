@@ -48,6 +48,7 @@ jobs:
           script: |
             set -e
             cd online-store
+            git reset --hard HEAD
             git pull origin main
             docker-compose down
             docker-compose -f docker-compose.production.yml up -d --build
