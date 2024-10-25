@@ -38,14 +38,11 @@ jobs:
     name: Deploy to DigitalOcean
     runs-on: ubuntu-latest
     steps:
-      - name: Echo secrets
-        run: echo ${{ secrets.HOST }} ${{ secrets.USERNAME }}
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+          script: touch test.txt
 
