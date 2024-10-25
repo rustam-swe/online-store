@@ -46,6 +46,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
+            set -e
             cd online-store
             git pull
             docker compose -f docker-compose.production.yml up --build -d
