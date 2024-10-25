@@ -48,6 +48,7 @@ jobs:
           script: |
             set -e
             cd online-store
+            git reset --hard HEAD
             git pull
             docker compose -f docker-compose.production.yml up --build -d
             docker exec os_app php artisan optimize
