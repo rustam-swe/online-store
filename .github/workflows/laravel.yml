@@ -35,6 +35,7 @@ jobs:
       run: php artisan test
 
   deploy:
+    needs: laravel-tests
     name: Deploy to DigitalOcean
     runs-on: ubuntu-latest
     steps:
@@ -44,5 +45,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: touch test.txt
+          script: |
+            cd online-store
+            git pull origin main
+            docker exec os_app php artisan optimize
 
