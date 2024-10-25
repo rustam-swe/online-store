@@ -46,11 +46,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            set -e
             cd online-store
-            git reset --hard HEAD
-            git pull origin main
-            docker compose down
-            docker compose -f docker-compose.production.yml up -d --build
+            git pull
+            docker compose -f docker-compose.production.yml up --build -d
             docker exec os_app php artisan optimize
-
+            
